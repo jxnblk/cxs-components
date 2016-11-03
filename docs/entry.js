@@ -1,27 +1,24 @@
 
 import React from 'react'
-import ReactDOM from 'react-dom'
-import {
-  Page,
-  Title,
-  Box,
-  Div,
-  Button,
-  RedButton
-} from './primitives'
+import { render } from 'react-dom'
+import { renderToString } from 'react-dom/server'
+import App from './App'
+import { cxs } from '../src'
 
-const App = () => (
-  <Page>
-    <Title>Hello</Title>
-    <Box>
-      <Button children='Boop' />
-      <RedButton children='Boop' />
-    </Box>
-    <Box bg='red'>
-      Red Box
-    </Box>
-  </Page>
-)
+if (typeof document !== 'undefined') {
+  render(<App />, app)
+}
 
-ReactDOM.render(<App />, app)
+export default (locals, cb) => {
+  const html = renderToString(<App />)
+  const css = cxs.css
+
+  const page = (`<!DOCTYPE html>
+    <style>${css}</style>
+    <div id='app'>${html}</div>
+    <script src='bundle.js'></script>
+  `).replace(/^\s+/, '').trim()
+
+  cb(null, page)
+}
 

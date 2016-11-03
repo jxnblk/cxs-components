@@ -1,12 +1,16 @@
 
 const path = require('path')
+const StaticPlugin = require('static-site-generator-webpack-plugin')
 
 module.exports = {
-  entry: './docs/entry.js',
+  entry: {
+    index: './docs/entry.js'
+  },
 
   output: {
     path: path.join(__dirname, 'docs'),
-    filename: 'bundle.js'
+    filename: 'bundle.js',
+    libraryTarget: 'umd'
   },
 
   module: {
@@ -20,6 +24,12 @@ module.exports = {
       }
     ]
   },
+
+  plugins: [
+    new StaticPlugin('index', '/', {
+      title: 'ϟ cxs-components'
+    })
+  ],
 
   devServer: {
     contentBase: 'docs/'

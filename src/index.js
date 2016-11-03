@@ -12,23 +12,24 @@ const getStyleObj = props => styles => {
     : null
 }
 
-const styled = (Tag = 'div') => (styles, {
+const comp = (Tag = 'div') => (style, {
   removeProps = []
 } = {}) => {
+  let rest
   const Comp = ({
     css,
     ...rest
   }) => {
     const props = Object.assign({}, rest)
 
-    // Pass styles to child component
+    // Pass style to child component
     if (typeof Tag === 'function') {
-      props.css = getStyleObj({ css, ...props })(styles)
+      props.css = getStyleObj({ css, ...props })(style)
     }
 
-    // Merge styles if props.css is passed through
+    // Merge style if props.css is passed through
     // Currently this creates additional classNames
-    const mergedStyles = merge.recursive(getStyleObj({ css, ...props })(styles), css)
+    const mergedStyles = merge.recursive(getStyleObj({ css, ...props })(style), css)
 
     const cx = classnames(props.className,
       cxs(mergedStyles)
@@ -45,7 +46,9 @@ const styled = (Tag = 'div') => (styles, {
   return Comp
 }
 
-styled.cxs = cxs
+comp.cxs = cxs
 
-export default styled
+export { default as cxs } from 'cxs'
+
+export default comp
 

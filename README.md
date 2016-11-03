@@ -1,5 +1,5 @@
 
-# ϟ cxs components
+# ϟ cxs-components
 
 Styled UI component primitives for React - built with cxs
 
@@ -7,24 +7,30 @@ Styled UI component primitives for React - built with cxs
 npm install cxs-components
 ```
 
+
 ## Features
+
 - 7 KB
-- Simple API
-- Performant functional CSS-in-JS
+- Simple API to quickly create UI components
+- Performant, functional CSS-in-JS
+- Uses native JavaScript objects
+- Avoids style collisions with hashed class selectors
 - Supports pseudoclasses, media queries, and keyframes
 
-## Usage
-
-cxs components' API is inspired by
+cxs-components' API is inspired by
 [styled-components](https://github.com/styled-components/styled-components)
 but instead of tagged template literals it uses plain JavaScript objects,
 which allow for the use of native JavaScript types without the need to escape embedded CSS.
 
+For reasons similar to the motivations behind JSX, this is preferred over embedded CSS syntax.
+
 > Template literals work well for long embedded DSLs. Unfortunately the syntax noise is substantial when you exit in and out of embedded arbitrary ECMAScript expressions with identifiers in scope.
+– Facebook JSX
 
-– [Facebook JSX](https://facebook.github.io/jsx/#why-not-template-literals)
+cxs-components helps enforce separation of style and business logic by promoting pure functional UI components – i.e. presentational or "dumb" components.
 
-cxs components helps enforce separation of style and business logic by promoting pure functional UI components – i.e. presentational or "dumb" components.
+
+## Usage
 
 ```js
 import React from 'react'
@@ -34,14 +40,18 @@ const Box = comp('div')({
   padding: 32
 })
 
-const RedBox = comp(Box)({
+const TomatoBox = comp(Box)({
   backgroundColor: 'tomato'
 })
 
 const App = () => (
   <div>
-    <Box>Hello</Box>
-    <RedBox>Red</RedBox>
+    <Box>
+      Hello
+    </Box>
+    <TomatoBox>
+      Tomato
+    </TomatoBox>
   </div>
 )
 ```
@@ -83,6 +93,7 @@ specify a `removeProps` array in the options object.
 const Box = comp('div')(props => ({
   padding: props.big ? 64 : 32
 }), {
+  // Clean up after yourself 🛁
   removeProps: [
     'big'
   ]
@@ -129,9 +140,9 @@ const render = (req, res) => {
   )
   const css = cxs.css
 
-  return `<!DOCTYPE html>
-<style>${css}</style>
-${html}`
+  return (`<!DOCTYPE html>
+    <style>${css}</style>
+    ${html}`).replace(/^\s+/, '')
 }
 ```
 
@@ -139,6 +150,9 @@ ${html}`
 ## Related
 
 - [cxs](https://github.com/jxnblk/cxs)
+- [react-cxs](https://github.com/jxnblk/react-cxs)
 - [styled-components](https://github.com/styled-components/styled-components)
+- [glamor](https://github.com/threepointone/glamor)
 
-MIT License
+[MIT License](LICENSE.md)
+
