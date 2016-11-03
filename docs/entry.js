@@ -17,9 +17,9 @@ const App = () => (
       <Button children='Boop' />
       <RedButton children='Boop' />
     </Box>
-    <Div css={{ big: true }}>
+    <Box bg='red'>
       Red Box
-    </Div>
+    </Box>
   </Page>
 )
 

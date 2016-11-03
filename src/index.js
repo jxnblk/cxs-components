@@ -14,9 +14,10 @@ const getStyleObj = props => styles => {
     : null
 }
 
-const styled = (Tag = 'div') => (styles) => {
+const styled = (Tag = 'div') => (styles, {
+  removeProps = []
+} = {}) => {
   const Comp = ({
-    _css,
     css,
     ...rest
   }) => {
@@ -24,16 +25,20 @@ const styled = (Tag = 'div') => (styles) => {
     const props = Object.assign({}, rest)
     // Pass styles to child component
     if (typeof Tag === 'function') {
-      props._css = getStyleObj({ css, ...props })(styles)
+      props.css = getStyleObj({ css, ...props })(styles)
     }
 
-    // Merge styles if props._css is passed through
+    // Merge styles if props.css is passed through
     // Currently this creates additional classNames
-    const mergedStyles = merge.recursive(getStyleObj({ css, ...props })(styles), _css)
+    const mergedStyles = merge.recursive(getStyleObj({ css, ...props })(styles), css)
 
     const cx = classnames(props.className,
       cxs(mergedStyles)
     )
+
+    removeProps.forEach(key => {
+      delete props[key]
+    })
 
     return <Tag {...props} className={cx} />
   }

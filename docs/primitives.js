@@ -48,19 +48,9 @@ export const Box = comp('div')((props) => ({
   padding: props.big ? 64 : 32,
   color: colors[props.color] || props.color,
   backgroundColor: colors[props.bg] || props.bg,
-}))
-
-export const Div = comp('div')(({ css }) => ({
-  padding: css.big ? 64 : 32,
-  color: colors[css.color] || css.color,
-  backgroundColor: colors[css.bg] || css.bg
-}))
-
-/* Potential API
- *  const Box = comp('div')(styles, {
- *    removeProps: [
- *      'big', 'color', bg'
- *    ]
- *  })
- */
+}), {
+  removeProps: [
+    'big', 'color', 'bg'
+  ]
+})
 
