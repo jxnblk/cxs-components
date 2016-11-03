@@ -16,7 +16,7 @@ which allow for the use of native JavaScript types without the need to use escap
 
 > Template literals work well for long embedded DSLs. Unfortunately the syntax noise is substantial when you exit in and out of embedded arbitrary ECMAScript expressions with identifiers in scope.
 
-- [Facebook JSX](https://facebook.github.io/jsx/#why-not-template-literals)
+– [Facebook JSX](https://facebook.github.io/jsx/#why-not-template-literals)
 
 cxs component helps enforce separation of style and business logic by promoting pure functional UI components – i.e. presentational or "dumb" components.
 
