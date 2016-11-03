@@ -18,7 +18,7 @@ which allow for the use of native JavaScript types without the need to use escap
 
 – [Facebook JSX](https://facebook.github.io/jsx/#why-not-template-literals)
 
-cxs component helps enforce separation of style and business logic by promoting pure functional UI components – i.e. presentational or "dumb" components.
+cxs components helps enforce separation of style and business logic by promoting pure functional UI components – i.e. presentational or "dumb" components.
 
 ```js
 import React from 'react'
@@ -83,5 +83,29 @@ const Box = comp('div')(props => ({
 })
 ```
 
+### Pseudoclasses
+
+cxs supports pseudoclasses.
+
+```js
+const Link = comp('a')({
+  color: blue,
+  ':hover': {
+    color: darkblue
+  }
+})
+```
+
+### Media queries
+
+```js
+const Heading = comp('h2')({
+  fontSize: 32,
+  margin: 0,
+  '@media screen and (min-width: 52em)': {
+    fontSize: 48
+  }
+})
+```
 
 MIT License
