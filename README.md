@@ -1,18 +1,24 @@
 
-# cxs components
+# ϟ cxs components
 
-Styled UI component primitives for React
+Styled UI component primitives for React - built with cxs
 
 ```sh
-npm i -S cxs-components
+npm install cxs-components
 ```
+
+## Features
+- 7 KB
+- Simple API
+- Performant functional CSS-in-JS
+- Supports pseudoclasses, media queries, and keyframes
 
 ## Usage
 
 cxs components' API is inspired by
 [styled-components](https://github.com/styled-components/styled-components)
 but instead of tagged template literals it uses plain JavaScript objects,
-which allow for the use of native JavaScript types without the need to use escape syntax.
+which allow for the use of native JavaScript types without the need to escape embedded CSS.
 
 > Template literals work well for long embedded DSLs. Unfortunately the syntax noise is substantial when you exit in and out of embedded arbitrary ECMAScript expressions with identifiers in scope.
 
@@ -107,5 +113,32 @@ const Heading = comp('h2')({
   }
 })
 ```
+
+### Server-Side Rendering
+
+To render cxs components server-side extract the CSS string after rendering the application tree.
+
+```js
+const { createElement } = require('react')
+const { renderToString } = require('react-dom/server')
+const { cxs } = require('cxs-components')
+
+const render = (req, res) => {
+  const html = renderToString(
+    createElement(App)
+  )
+  const css = cxs.css
+
+  return `<!DOCTYPE html>
+<style>${css}</style>
+${html}`
+}
+```
+
+
+## Related
+
+- [cxs](https://github.com/jxnblk/cxs)
+- [styled-components](https://github.com/styled-components/styled-components)
 
 MIT License
