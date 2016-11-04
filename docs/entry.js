@@ -24,7 +24,7 @@ export default (locals, cb) => {
 <meta name='twitter:site' content='@jxnblk'>
 <meta name='twitter:title' content='cxs-components'>
 <meta name='twitter:description' content='Styled UI component primitives for React - built with cxs'>
-<meta name='twitter:image' content='card.png'>
+<meta name='twitter:image' content='http://jxnblk.com/cxs-components/card.png'>
 <style>*{box-sizing:border-box}body{margin:0}${css}</style>
 <div id='app'>${html}</div>
 <script>
