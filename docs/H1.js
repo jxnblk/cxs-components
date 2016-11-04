@@ -1,5 +1,6 @@
 
 import comp from '../src'
+import withSpace from './withSpace'
 import { breakpoints, typescale } from './styles'
 
 const H1 = comp('h1')({
@@ -14,5 +15,5 @@ const H1 = comp('h1')({
   }
 })
 
-export default H1
+export default withSpace(H1)
 

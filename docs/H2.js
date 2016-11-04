@@ -1,5 +1,6 @@
 
 import comp from '../src'
+import withSpace from './withSpace'
 import { typescale } from './styles'
 
 const H2 = comp('h2')(props => ({
@@ -10,5 +11,5 @@ const H2 = comp('h2')(props => ({
   removeProps: [ 'size' ]
 })
 
-export default H2
+export default withSpace(H2)
 

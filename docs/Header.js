@@ -29,7 +29,7 @@ export default ({
         />
       </Flex>
       <Box py={4} my={3}>
-        <H1>
+        <H1 mb={4}>
           cxs-components
         </H1>
         <H2>
