@@ -1,7 +1,9 @@
 
 import comp from '../src'
 import { scale, colors } from './styles'
+import withSpace from './withSpace'
 
+/*
 const s = prop => x => typeof x !== 'undefined'
   ? (
     x === 'auto'
@@ -24,20 +26,17 @@ const pad = ({ p, px, py }) => ({
   ...s('padding-top')(py),
   ...s('padding-bottom')(py)
 })
+*/
 
 const Box = comp('div')(props => ({
-  ...mar(props),
-  ...pad(props),
   color: colors[props.color] || props.color,
   backgroundColor: colors[props.bg] || props.bg,
   border: props.border ? `4px solid ${colors[props.border] || props.border}` : null
 }), {
   removeProps: [
     'big', 'color', 'bg', 'border',
-    'm', 'mx', 'my',
-    'p', 'px', 'py',
   ]
 })
 
-export default Box
+export default withSpace(Box)
 
