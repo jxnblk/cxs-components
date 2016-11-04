@@ -6,6 +6,7 @@
   "scripts": {
     "prepublish": "babel src --out-dir dist",
     "start": "webpack-dev-server",
+    "build": "webpack -p",
     "test": "ava",
     "size": "npm run prepublish && bundle-size ."
   },

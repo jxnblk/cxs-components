@@ -13,9 +13,9 @@ const getStyleObj = props => styles => {
 }
 
 const comp = (Tag = 'div') => (style, {
+  defaultProps = {},
   removeProps = []
 } = {}) => {
-  let rest
   const Comp = ({
     css,
     ...rest
@@ -42,6 +42,8 @@ const comp = (Tag = 'div') => (style, {
 
     return <Tag {...props} className={cx} />
   }
+
+  Comp.defaultProps = defaultProps
 
   return Comp
 }
