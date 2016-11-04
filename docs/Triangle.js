@@ -18,6 +18,7 @@ const Triangle = comp('div')(props => ({
   },
   removeProps: [
     'size',
+    'color',
     'top',
     'right',
     'bottom',
