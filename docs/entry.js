@@ -17,6 +17,7 @@ export default (locals, cb) => {
 
   const page = (`<!DOCTYPE html>
     <meta charset='utf-8'>
+    <meta name='viewport' content='width=device-width,initial-scale=1'>
     <title>cxs-components</title>
     <meta name='description' content='Styled UI component primitives for React - built with cxs'>
     <meta name='twitter:card' content='summary'>
