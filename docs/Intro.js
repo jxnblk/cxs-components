@@ -26,7 +26,8 @@ export default () => (
       }}
       my={4}
       color={col(8, 8, 3)}
-      border={col(8, 8, 3)}>
+      border={4}
+      borderColor={col(8, 8, 3)}>
       <Blockquote>
         ”Template literals work well for long embedded DSLs. Unfortunately the syntax noise is substantial when you exit in and out of embedded arbitrary ECMAScript expressions with identifiers in scope.”
       </Blockquote>
