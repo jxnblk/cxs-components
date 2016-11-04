@@ -3,6 +3,8 @@
 
 Styled UI component primitives for React - built with cxs
 
+[![Build Status](https://travis-ci.org/jxnblk/cxs-components.svg?branch=master)](https://travis-ci.org/jxnblk/cxs-components)
+
 ```sh
 npm install cxs-components
 ```
@@ -133,6 +135,7 @@ To render cxs components server-side extract the CSS string after rendering the 
 const { createElement } = require('react')
 const { renderToString } = require('react-dom/server')
 const { cxs } = require('cxs-components')
+const App = require('./App')
 
 const render = (req, res) => {
   const html = renderToString(
@@ -142,7 +145,7 @@ const render = (req, res) => {
 
   return (`<!DOCTYPE html>
     <style>${css}</style>
-    ${html}`).replace(/^\s+/, '')
+    ${html}`)
 }
 ```
 
