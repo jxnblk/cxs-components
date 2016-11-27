@@ -17,6 +17,7 @@ const color = ({ color, bg, borderColor }) => ({
  */
 
 const borderStyle = ({ border }) => {
+  console.log('border', border)
   if (typeof border === 'undefined' || border === null) {
     return
   }
