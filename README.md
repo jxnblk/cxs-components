@@ -9,7 +9,6 @@ Styled UI component primitives for React - built with cxs
 npm install cxs-components
 ```
 
-
 ## Features
 
 - 7 KB
@@ -149,6 +148,25 @@ const render = (req, res) => {
 }
 ```
 
+### Static Style Components
+
+For even better performance, the optional static module can be imported instead of the default module.
+The static create component function works the same as the defualt,
+but does *NOT* support functions as an argument for styles.
+
+```js
+import comp from 'cxs-components/static'
+
+// This works the same
+const Box = comp('div')({
+  padding: 32
+})
+
+// This WILL NOT work with the static create component function
+const Card = comp('div')(props => ({
+  color: props.color
+}))
+```
 
 ## Related
 
