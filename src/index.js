@@ -1,56 +1,48 @@
 
 import React from 'react'
-import cxs from 'cxs'
 import classnames from 'classnames'
-import merge from 'merge'
+import cxs from 'cxs'
 
-const getStyleObj = props => styles => {
-  return typeof styles === 'function'
-    ? styles(props)
-    : typeof styles === 'object'
-    ? styles
-    : null
+const getProps = (originalProps, removeProps) => {
+  const props = Object.keys(originalProps)
+    .map(key => {
+      const value = originalProps[key]
+      return { key, value }
+    })
+    .filter(prop => removeProps.indexOf(prop.key) < 0)
+    .reduce((a, b) => {
+      a[b.key] = b.value
+      return a
+    }, {})
+  return props
 }
 
-const comp = (Tag = 'div') => (style, {
-  defaultProps = {},
-  removeProps = []
-} = {}) => {
-  const Comp = ({
-    css,
-    ...rest
-  }) => {
-    const props = Object.assign({}, rest)
+const createComponent = (Tag = 'div') => (style = {}, options = {}) => {
+  const { defaultProps = {}, removeProps = [] } = options
 
-    // Pass style to child component
-    if (typeof Tag === 'function') {
-      props.css = getStyleObj({ css, ...props })(style)
-    }
+  const cx = typeof style === 'function'
+    ? (props) => cxs(style(props))
+    : cxs(style)
 
-    // Merge style if props.css is passed through
-    // Currently this creates additional classNames
-    const mergedStyles = merge.recursive(getStyleObj({ css, ...props })(style), css)
+  const Component = ({ className, ...rest }) => {
+    const cxsClassName = typeof cx === 'function' ? cx(rest) : cx
+    const combinedClassName = classnames(cxsClassName, className)
+    const props = getProps(rest, removeProps)
 
-    const cx = classnames(props.className,
-      cxs(mergedStyles)
+    return (
+      <Tag
+        {...props}
+        className={combinedClassName}
+      />
     )
-
-    // Manually remove style props
-    removeProps.forEach(key => {
-      delete props[key]
-    })
-
-    return <Tag {...props} className={cx} />
   }
 
-  Comp.defaultProps = defaultProps
+  Component.defaultProps = defaultProps
 
-  return Comp
+  return Component
 }
-
-comp.cxs = cxs
 
 export { default as cxs } from 'cxs'
 
-export default comp
+export default createComponent
 

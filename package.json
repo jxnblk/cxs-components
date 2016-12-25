@@ -1,6 +1,6 @@
 {
   "name": "cxs-components",
-  "version": "1.0.0-b0",
+  "version": "1.0.0-b1",
   "description": "Styled UI component primitives for React - built with cxs",
   "main": "dist/index.js",
   "scripts": {
@@ -8,7 +8,7 @@
     "start": "webpack-dev-server",
     "build": "webpack -p",
     "test": "ava",
-    "size": "npm run prepublish && bundle-size ."
+    "size": "npm run prepublish && bundle-size ./static"
   },
   "keywords": [
     "react",
@@ -20,7 +20,7 @@
   "license": "MIT",
   "dependencies": {
     "classnames": "^2.2.5",
-    "cxs": "^2.0.0-b1",
+    "cxs": "^2.1.0",
     "merge": "^1.2.0"
   },
   "devDependencies": {
