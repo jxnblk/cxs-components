@@ -1,6 +1,9 @@
 
-# ϟ cxs-components
+# cxs-components
 
+## This repo has moved to https://github.com/jxnblk/cxs
+
+<!--
 Styled UI component primitives for React - built with cxs
 
 [![Build Status](https://travis-ci.org/jxnblk/cxs-components.svg?branch=master)](https://travis-ci.org/jxnblk/cxs-components)
@@ -176,4 +179,4 @@ const Card = comp('div')(props => ({
 - [glamor](https://github.com/threepointone/glamor)
 
 [MIT License](LICENSE.md)
-
+-->
